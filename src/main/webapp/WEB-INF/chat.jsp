@@ -147,19 +147,26 @@
             font-size: 16px;
             color: #444;
             line-height: 1.7;
-
-            white-space: pre-wrap;
             word-break: keep-all;
+
+            .ai-answer {
+                /* AI 응답 내부의 줄바꿈은 유지하도록 pre-wrap 적용 */
+                white-space: pre-wrap;
+                /* span은 기본적으로 inline 요소이므로,
+                   줄바꿈 등을 올바르게 처리하기 위해 block 요소로 변경 */
+                display: block;
+            }
         }
     </style>
 </head>
+
 <body>
 <div class="chat-container">
     <h2>🤖 AI 챗봇</h2>
 
     <div class="answer-box">
         <span class="emoji">🤖 삐-릭</span><br>
-        <span><%= request.getAttribute("answer") %></span>
+        <span class="ai-answer"><%= request.getAttribute("answer") %></span>
     </div>
 
     <form method="post">

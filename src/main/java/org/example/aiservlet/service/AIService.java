@@ -22,7 +22,10 @@ public class AIService {
     private final String groqKey;
 
     public AIService() {
-        Dotenv dotenv = Dotenv.load();
+        // 예: 프로젝트 루트 디렉토리를 기준으로 찾기
+        Dotenv dotenv = Dotenv.configure()
+                .directory("./") // 현재 디렉토리(프로젝트 루트)
+                .load();
 //        String apiKey = dotenv.get("GOOGLE_API_KEY");
         geminiClient = Client.builder().apiKey(
                 dotenv.get("GOOGLE_API_KEY")

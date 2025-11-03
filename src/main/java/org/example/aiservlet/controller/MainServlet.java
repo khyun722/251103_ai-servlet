@@ -29,7 +29,7 @@ public class MainServlet extends HttpServlet {
 //        String answer = ai.chat("저녁 메뉴 추천, 메뉴만 20자 이내로. 꾸미는 텍스트 없이.");
 //        req.setAttribute("answer", answer);
         req.setAttribute("title", "AI가 질문을 답해줍니다!");
-        req.setAttribute("answer", "질문을 입력해보세요!");
+        req.setAttribute("answer", " ");
         req.getRequestDispatcher("/WEB-INF/chat.jsp").forward(req, resp);
     }
 
@@ -39,7 +39,7 @@ public class MainServlet extends HttpServlet {
 //        String answer = ai.chat( "%s, 꾸미는 텍스트 없이.".formatted(textParam));
         String answer = ai.chatByGroq( "%s, 꾸미는 텍스트 없이.".formatted(textParam));
         req.setAttribute("title", "'%s'에 대한 AI의 답".formatted(textParam));
-        req.setAttribute("answer", answer);
+        req.setAttribute("answer", answer.trim());
         req.getRequestDispatcher("/WEB-INF/chat.jsp").forward(req, resp);
     }
 }
